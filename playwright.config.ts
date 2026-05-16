@@ -8,8 +8,12 @@ export default defineConfig({
   },
   webServer: {
     command: "npm run dev",
+    env: {
+      ...process.env,
+      KARAOKE_USE_MEMORY_REPO: "1",
+    },
     port: 3000,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     stdout: "pipe",
     stderr: "pipe",
   },

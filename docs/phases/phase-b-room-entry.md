@@ -6,66 +6,70 @@ Make it possible for hosts and guests to enter and share a karaoke room.
 
 ## Phase Checklist
 
-- [ ] B1: Create room flow
-- [ ] B2: Join room flow
-- [ ] B3: Room lobby and participant list
+- [x] B1: Create room flow
+- [x] B2: Join room flow
+- [x] B3: Room lobby and participant list
 
 ## Tickets
 
 ### B1: Create room flow
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Let a host create a new karaoke room.
 
 Acceptance criteria:
-- [ ] A user can create a room from the homepage
-- [ ] A unique room code is generated
-- [ ] The user is redirected into the new room as host
+- [x] A user can create a room from the homepage
+- [x] A unique room code is generated
+- [x] The user is redirected into the new room as host
+- [x] The host receives a durable local session token so later room actions do not depend on re-entering their name
 
 Unit coverage:
-- [ ] Test room-code generation and room-creation service logic
+- [x] Test room-code generation and room-creation service logic
 
 E2E coverage:
-- [ ] Verify a user can create a room and land on the room lobby
+- [x] Verify a user can create a room and land on the room lobby
 
 ### B2: Join room flow
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Let a guest join an existing room with a room code.
 
 Acceptance criteria:
-- [ ] A user can enter a room code and display name
-- [ ] The app validates whether the room exists
-- [ ] The joined user appears in the room lobby
+- [x] A user can enter a room code and display name
+- [x] The app validates whether the room exists
+- [x] The joined user appears in the room lobby
+- [x] The guest receives a durable local session token so refresh and player navigation can restore their room identity
 
 Unit coverage:
-- [ ] Test room-code validation and participant-creation logic
+- [x] Test room-code validation and participant-creation logic
 
 E2E coverage:
-- [ ] Verify a second browser session can join the same room
+- [x] Verify a second browser session can join the same room
 
 ### B3: Room lobby and participant list
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Show a shared lobby before singing starts.
 
 Acceptance criteria:
-- [ ] The room page shows room code, host status, and participant list
-- [ ] The host is visually distinguishable from guests
-- [ ] Empty-state messaging is shown when no songs are queued yet
+- [x] The room page shows room code, host status, and participant list
+- [x] The host is visually distinguishable from guests
+- [x] Empty-state messaging is shown when no songs are queued yet
+- [x] The lobby can render in a host-only state before any guests join, then expand cleanly once guest sessions are present
 
 Unit coverage:
-- [ ] Test participant sorting or lobby view-model helpers
+- [x] Test participant sorting or lobby view-model helpers
 
 E2E coverage:
-- [ ] Verify joined users see the same participant list in the lobby
+- [x] Verify joined users see the same participant list in the lobby
 
 ## Parallel Notes
 
-- [ ] After A3 and B1, B2 and B3 can move in parallel
+- [ ] After B1, B2 and the host-only lobby shell can move in parallel
+- [ ] The shared participant list behavior in B3 depends on B2 being in place
