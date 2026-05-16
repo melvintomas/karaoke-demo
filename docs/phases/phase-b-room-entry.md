@@ -6,9 +6,9 @@ Make it possible for hosts and guests to enter and share a karaoke room.
 
 ## Phase Checklist
 
-- [ ] B1: Create room flow
-- [ ] B2: Join room flow
-- [ ] B3: Room lobby and participant list
+- [x] B1: Create room flow
+- [x] B2: Join room flow
+- [x] B3: Room lobby and participant list
 
 ## Tickets
 
@@ -52,22 +52,22 @@ E2E coverage:
 
 ### B3: Room lobby and participant list
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Show a shared lobby before singing starts.
 
 Acceptance criteria:
-- [ ] The room page shows room code, host status, and participant list
-- [ ] The host is visually distinguishable from guests
-- [ ] Empty-state messaging is shown when no songs are queued yet
-- [ ] The lobby can render in a host-only state before any guests join, then expand cleanly once guest sessions are present
+- [x] The room page shows room code, host status, and participant list
+- [x] The host is visually distinguishable from guests
+- [x] Empty-state messaging is shown when no songs are queued yet
+- [x] The lobby can render in a host-only state before any guests join, then expand cleanly once guest sessions are present
 
 Unit coverage:
-- [ ] Test participant sorting or lobby view-model helpers
+- [x] Test participant sorting or lobby view-model helpers
 
 E2E coverage:
-- [ ] Verify joined users see the same participant list in the lobby
+- [x] Verify joined users see the same participant list in the lobby
 
 ## Parallel Notes
 

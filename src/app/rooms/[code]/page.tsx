@@ -51,9 +51,13 @@ export default async function RoomPage({ params, searchParams }: RoomPageProps) 
 
           <div className="rounded-3xl border border-[rgba(255,255,255,0.7)] bg-white/80 px-5 py-4 text-sm text-[var(--muted)]">
             <p className="font-semibold text-[var(--foreground)]">
-              {viewModel.participants.length} singers in the room
+              {viewModel.participantCount} singer{viewModel.participantCount === 1 ? "" : "s"} in the room
             </p>
-            <p className="mt-1">Share the room code so your next guest can jump in.</p>
+            <p className="mt-1">
+              {viewModel.isHostOnly
+                ? "You're the first singer here. Share the room code so guests can jump in."
+                : `${viewModel.guestCount} guest${viewModel.guestCount === 1 ? "" : "s"} joined the lobby.`}
+            </p>
           </div>
         </div>
 
