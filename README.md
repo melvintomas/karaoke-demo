@@ -1,44 +1,70 @@
 # Karaoke App
 
-Shared-room karaoke MVP built with Next.js and Supabase.
+A shared-room karaoke MVP built with Next.js and Supabase.
 
-## Phase A Scope
+## Current Scope
 
-This repository currently includes:
+This branch covers the app foundation plus the first room flow:
 
-- A Next.js 16 app with TypeScript, Tailwind CSS, and ESLint
-- Environment parsing helpers for Supabase configuration
-- Shared Supabase clients for browser and server usage
-- An initial MVP data model and demo seed SQL
-- Unit and browser smoke-test scaffolding
+- Landing page with host room creation
+- Server-side room creation and session persistence
+- Room lobby page with participant list and empty queue state
+- Supabase-backed schema and demo seed data for rooms, singers, songs, and lyric lines
+- Unit tests with Vitest and browser smoke tests with Playwright
 
-## Getting Started
+The next milestones are tracked in the phase docs under [`docs/phases`](./docs/phases).
 
-1. Install dependencies:
+## Stack
+
+- Next.js 16 with React 19 and TypeScript
+- Tailwind CSS 4
+- Supabase for persistence
+- Zod for environment validation
+- Vitest and Testing Library for unit tests
+- Playwright for end-to-end coverage
+
+## Local Setup
+
+1. Install dependencies.
 
 ```bash
 npm install
 ```
 
-2. Create a local environment file:
+2. Copy the example environment file.
 
 ```bash
 cp .env.example .env.local
 ```
 
-3. Fill in your Supabase values:
+3. Fill in these values in `.env.local`.
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY` (optional unless you need admin/server tasks)
+- `SUPABASE_SERVICE_ROLE_KEY`
 
-4. Start the app:
+4. Apply the schema and seed data to your Supabase project.
+
+- Migration: [`supabase/migrations/20260516154000_phase_a_foundation.sql`](./supabase/migrations/20260516154000_phase_a_foundation.sql)
+- Seed: [`supabase/seed.sql`](./supabase/seed.sql)
+- Data model notes: [`docs/data-model.md`](./docs/data-model.md)
+
+5. Start the app.
 
 ```bash
 npm run dev
 ```
 
-The homepage will be available at `http://localhost:3000`.
+Open `http://localhost:3000`.
+
+## Current User Flow
+
+1. Enter a host display name and optional room name on the homepage.
+2. Submit the form to create a room.
+3. Land in `/rooms/[code]` with the host session attached.
+4. View the lobby, participant list, and empty queue placeholder.
+
+Join-by-code, catalog browsing, queue management, and karaoke playback are planned next and documented in the phase files.
 
 ## Scripts
 
@@ -46,13 +72,14 @@ The homepage will be available at `http://localhost:3000`.
 - `npm run build` creates a production build
 - `npm run start` serves the production build
 - `npm run lint` runs ESLint
-- `npm run test` runs unit tests
-- `npm run test:e2e` runs the Playwright smoke test
+- `npm run test` runs the Vitest suite
+- `npm run test:e2e` runs the Playwright tests
 
-## Supabase Notes
+## Project Docs
 
-- SQL schema lives in [supabase/migrations/20260516154000_phase_a_foundation.sql](/Users/melvin/Documents/demo/karaoke-app/supabase/migrations/20260516154000_phase_a_foundation.sql)
-- Demo seed data lives in [supabase/seed.sql](/Users/melvin/Documents/demo/karaoke-app/supabase/seed.sql)
-- Relationship notes live in [docs/data-model.md](/Users/melvin/Documents/demo/karaoke-app/docs/data-model.md)
-
-You can apply the schema with your preferred Supabase workflow, for example via the Supabase CLI or the SQL editor.
+- [`docs/phases/phase-a-foundation-and-setup.md`](./docs/phases/phase-a-foundation-and-setup.md)
+- [`docs/phases/phase-b-room-entry.md`](./docs/phases/phase-b-room-entry.md)
+- [`docs/phases/phase-c-song-catalog-and-queue.md`](./docs/phases/phase-c-song-catalog-and-queue.md)
+- [`docs/phases/phase-d-karaoke-playback.md`](./docs/phases/phase-d-karaoke-playback.md)
+- [`docs/phases/phase-e-realtime-and-resilience.md`](./docs/phases/phase-e-realtime-and-resilience.md)
+- [`docs/phases/phase-f-polish-and-launch-readiness.md`](./docs/phases/phase-f-polish-and-launch-readiness.md)
