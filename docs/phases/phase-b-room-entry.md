@@ -33,22 +33,22 @@ E2E coverage:
 
 ### B2: Join room flow
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Let a guest join an existing room with a room code.
 
 Acceptance criteria:
-- [ ] A user can enter a room code and display name
-- [ ] The app validates whether the room exists
-- [ ] The joined user appears in the room lobby
-- [ ] The guest receives a durable local session token so refresh and player navigation can restore their room identity
+- [x] A user can enter a room code and display name
+- [x] The app validates whether the room exists
+- [x] The joined user appears in the room lobby
+- [x] The guest receives a durable local session token so refresh and player navigation can restore their room identity
 
 Unit coverage:
-- [ ] Test room-code validation and participant-creation logic
+- [x] Test room-code validation and participant-creation logic
 
 E2E coverage:
-- [ ] Verify a second browser session can join the same room
+- [x] Verify a second browser session can join the same room
 
 ### B3: Room lobby and participant list
 
