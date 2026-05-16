@@ -26,6 +26,7 @@ test("host can create a room and land in the lobby", async ({ page }) => {
     }),
   ).toBeVisible();
   await expect(page.getByText("Jordan (You)")).toBeVisible();
+  await expect(page.getByText("You're the first singer here.")).toBeVisible();
   await expect(page.getByText("No songs queued yet")).toBeVisible();
 });
 
@@ -54,6 +55,10 @@ test("a second browser session can join the host's room", async ({ browser }) =>
   await expect(guestPage).toHaveURL(new RegExp(`/rooms/${roomCode}\\?participant=`));
   await expect(guestPage.getByText("Alex", { exact: true })).toBeVisible();
   await expect(guestPage.getByText("Sam (You)")).toBeVisible();
+
+  await hostPage.reload();
+  await expect(hostPage.getByText("Alex (You)")).toBeVisible();
+  await expect(hostPage.getByText("Sam", { exact: true })).toBeVisible();
 
   await hostContext.close();
   await guestContext.close();

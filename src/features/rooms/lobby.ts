@@ -25,6 +25,9 @@ export function buildLobbyViewModel(
   return {
     room: lobby.room,
     participants,
+    participantCount: participants.length,
+    guestCount: participants.filter((participant) => !participant.isHost).length,
+    isHostOnly: participants.length === 1,
     queuedSongCount: lobby.queuedSongCount,
     hasQueuedSongs: lobby.queuedSongCount > 0,
   };
