@@ -41,14 +41,37 @@ export default function Home() {
 
         <aside className="flex flex-col gap-6">
           <section className="rounded-[2rem] border border-[var(--panel-border)] bg-[#1b1432] p-8 text-white shadow-[0_20px_60px_rgba(27,20,50,0.24)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-[#ffd9cc]">Current Slice</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-[#ffd9cc]">Start A Room</p>
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em]">
-              Foundation, env wiring, and the first schema.
+              Create a lobby and hand the mic to your first guests.
             </h2>
-            <p className="mt-4 text-base leading-7 text-[#f3eefe]">
-              Use the docs and SQL files in this repo to connect Supabase, seed demo songs,
-              and start shipping room flows in the next phase.
-            </p>
+            <form action="/rooms/create" method="post" className="mt-6 space-y-4">
+              <label className="block">
+                <span className="text-sm font-semibold text-[#ffd9cc]">Your display name</span>
+                <input
+                  required
+                  name="hostDisplayName"
+                  className="mt-2 w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/60"
+                  placeholder="Alex"
+                />
+              </label>
+
+              <label className="block">
+                <span className="text-sm font-semibold text-[#ffd9cc]">Room name</span>
+                <input
+                  name="roomName"
+                  className="mt-2 w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/60"
+                  placeholder="Friday Night Karaoke"
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="w-full rounded-2xl bg-[#ff7a59] px-4 py-3 text-base font-semibold text-[#1b1432] transition hover:bg-[#ff936f]"
+              >
+                Create room
+              </button>
+            </form>
           </section>
 
           <section className="rounded-[2rem] border border-[var(--panel-border)] bg-white/82 p-8 shadow-[0_18px_50px_rgba(89,59,130,0.08)]">
@@ -60,6 +83,9 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <p className="mt-6 rounded-2xl border border-dashed border-[var(--panel-border)] px-4 py-3 text-sm leading-6 text-[var(--muted)]">
+              Join-room entry lands in the next ticket. For now, the host can create a fresh lobby from here.
+            </p>
           </section>
         </aside>
       </section>

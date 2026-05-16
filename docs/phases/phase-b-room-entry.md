@@ -14,21 +14,22 @@ Make it possible for hosts and guests to enter and share a karaoke room.
 
 ### B1: Create room flow
 
-- [ ] Ticket status
+- [x] Ticket status
 
 Goal:
 - Let a host create a new karaoke room.
 
 Acceptance criteria:
-- [ ] A user can create a room from the homepage
-- [ ] A unique room code is generated
-- [ ] The user is redirected into the new room as host
+- [x] A user can create a room from the homepage
+- [x] A unique room code is generated
+- [x] The user is redirected into the new room as host
+- [x] The host receives a durable local session token so later room actions do not depend on re-entering their name
 
 Unit coverage:
-- [ ] Test room-code generation and room-creation service logic
+- [x] Test room-code generation and room-creation service logic
 
 E2E coverage:
-- [ ] Verify a user can create a room and land on the room lobby
+- [x] Verify a user can create a room and land on the room lobby
 
 ### B2: Join room flow
 
@@ -41,6 +42,7 @@ Acceptance criteria:
 - [ ] A user can enter a room code and display name
 - [ ] The app validates whether the room exists
 - [ ] The joined user appears in the room lobby
+- [ ] The guest receives a durable local session token so refresh and player navigation can restore their room identity
 
 Unit coverage:
 - [ ] Test room-code validation and participant-creation logic
@@ -59,6 +61,7 @@ Acceptance criteria:
 - [ ] The room page shows room code, host status, and participant list
 - [ ] The host is visually distinguishable from guests
 - [ ] Empty-state messaging is shown when no songs are queued yet
+- [ ] The lobby can render in a host-only state before any guests join, then expand cleanly once guest sessions are present
 
 Unit coverage:
 - [ ] Test participant sorting or lobby view-model helpers
@@ -68,4 +71,5 @@ E2E coverage:
 
 ## Parallel Notes
 
-- [ ] After A3 and B1, B2 and B3 can move in parallel
+- [ ] After B1, B2 and the host-only lobby shell can move in parallel
+- [ ] The shared participant list behavior in B3 depends on B2 being in place
