@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { getRoomRepository } from "@/features/rooms/repository";
-import { ROOM_SESSION_COOKIE, serializeRoomSession } from "@/features/rooms/session";
 import { createRoom } from "@/features/rooms/service";
+import {
+  ROOM_SESSION_COOKIE,
+  serializeRoomSession,
+} from "@/features/rooms/session";
 
 export async function POST(request: Request) {
   const formData = await request.formData();
@@ -38,9 +41,14 @@ export async function POST(request: Request) {
     return response;
   } catch (error) {
     const message =
-      error instanceof Error ? encodeURIComponent(error.message) : "Unknown error";
-    return NextResponse.redirect(new URL(`/?createError=${message}`, request.url), {
-      status: 303,
-    });
+      error instanceof Error
+        ? encodeURIComponent(error.message)
+        : "Unknown error";
+    return NextResponse.redirect(
+      new URL(`/?createError=${message}`, request.url),
+      {
+        status: 303,
+      },
+    );
   }
 }

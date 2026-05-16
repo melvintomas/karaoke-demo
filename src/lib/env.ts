@@ -19,7 +19,9 @@ export function getPublicEnv(source: NodeJS.ProcessEnv = process.env) {
   const parsed = publicEnvSchema.safeParse(source);
 
   if (!parsed.success) {
-    throw new Error(`Invalid public environment: ${formatErrors(parsed.error)}`);
+    throw new Error(
+      `Invalid public environment: ${formatErrors(parsed.error)}`,
+    );
   }
 
   return parsed.data;
@@ -29,7 +31,9 @@ export function getServerEnv(source: NodeJS.ProcessEnv = process.env) {
   const parsed = serverEnvSchema.safeParse(source);
 
   if (!parsed.success) {
-    throw new Error(`Invalid server environment: ${formatErrors(parsed.error)}`);
+    throw new Error(
+      `Invalid server environment: ${formatErrors(parsed.error)}`,
+    );
   }
 
   return parsed.data;

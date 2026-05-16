@@ -1,6 +1,6 @@
 import { generateRoomCode, normalizeRoomCode } from "@/features/rooms/code";
-import type { RoomLobbyRecord } from "@/features/rooms/types";
 import type { RoomRepository } from "@/features/rooms/repository";
+import type { RoomLobbyRecord } from "@/features/rooms/types";
 
 export class RoomServiceError extends Error {}
 
@@ -15,7 +15,8 @@ export async function createRoom(
   createCode: () => string = () => generateRoomCode(),
 ) {
   const hostDisplayName = input.hostDisplayName.trim();
-  const roomName = input.roomName?.trim() || `${hostDisplayName}'s Karaoke Room`;
+  const roomName =
+    input.roomName?.trim() || `${hostDisplayName}'s Karaoke Room`;
 
   if (!hostDisplayName) {
     throw new RoomServiceError("Enter a host name to create a room.");
@@ -39,7 +40,9 @@ export async function createRoom(
     }
   }
 
-  throw new RoomServiceError("Unable to generate a unique room code. Try again.");
+  throw new RoomServiceError(
+    "Unable to generate a unique room code. Try again.",
+  );
 }
 
 export async function joinRoom(

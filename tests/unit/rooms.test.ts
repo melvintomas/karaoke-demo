@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { generateRoomCode, normalizeRoomCode } from "@/features/rooms/code";
-import { createRoom, RoomServiceError } from "@/features/rooms/service";
 import type { RoomRepository } from "@/features/rooms/repository";
+import { createRoom, RoomServiceError } from "@/features/rooms/service";
 
 describe("room helpers", () => {
   it("normalizes room codes for lookups", () => {
@@ -71,8 +71,8 @@ describe("createRoom", () => {
       getRoomLobby: vi.fn(),
     } satisfies RoomRepository;
 
-    await expect(createRoom({ hostDisplayName: "   " }, repository)).rejects.toThrow(
-      RoomServiceError,
-    );
+    await expect(
+      createRoom({ hostDisplayName: "   " }, repository),
+    ).rejects.toThrow(RoomServiceError);
   });
 });

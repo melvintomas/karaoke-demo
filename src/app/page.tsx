@@ -22,8 +22,8 @@ export default function Home() {
             Build the karaoke room before the first song starts.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-            This starter app is wired for the MVP plan: room creation, queue management,
-            and synced lyrics backed by Supabase.
+            This starter app is wired for the MVP plan: room creation, queue
+            management, and synced lyrics backed by Supabase.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {milestones.map((milestone) => (
@@ -41,13 +41,21 @@ export default function Home() {
 
         <aside className="flex flex-col gap-6">
           <section className="rounded-[2rem] border border-[var(--panel-border)] bg-[#1b1432] p-8 text-white shadow-[0_20px_60px_rgba(27,20,50,0.24)]">
-            <p className="text-sm uppercase tracking-[0.2em] text-[#ffd9cc]">Start A Room</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-[#ffd9cc]">
+              Start A Room
+            </p>
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em]">
               Create a lobby and hand the mic to your first guests.
             </h2>
-            <form action="/rooms/create" method="post" className="mt-6 space-y-4">
+            <form
+              action="/rooms/create"
+              method="post"
+              className="mt-6 space-y-4"
+            >
               <label className="block">
-                <span className="text-sm font-semibold text-[#ffd9cc]">Your display name</span>
+                <span className="text-sm font-semibold text-[#ffd9cc]">
+                  Your display name
+                </span>
                 <input
                   required
                   name="hostDisplayName"
@@ -57,7 +65,9 @@ export default function Home() {
               </label>
 
               <label className="block">
-                <span className="text-sm font-semibold text-[#ffd9cc]">Room name</span>
+                <span className="text-sm font-semibold text-[#ffd9cc]">
+                  Room name
+                </span>
                 <input
                   name="roomName"
                   className="mt-2 w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-white outline-none placeholder:text-white/60"
@@ -84,7 +94,8 @@ export default function Home() {
               ))}
             </ul>
             <p className="mt-6 rounded-2xl border border-dashed border-[var(--panel-border)] px-4 py-3 text-sm leading-6 text-[var(--muted)]">
-              Join-room entry lands in the next ticket. For now, the host can create a fresh lobby from here.
+              Join-room entry lands in the next ticket. For now, the host can
+              create a fresh lobby from here.
             </p>
           </section>
         </aside>

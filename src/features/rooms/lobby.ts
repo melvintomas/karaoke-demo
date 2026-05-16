@@ -17,10 +17,12 @@ export function buildLobbyViewModel(
   lobby: RoomLobbyRecord,
   currentParticipantId?: string | null,
 ) {
-  const participants = sortParticipants(lobby.participants).map((participant) => ({
-    ...participant,
-    isCurrentParticipant: participant.id === currentParticipantId,
-  }));
+  const participants = sortParticipants(lobby.participants).map(
+    (participant) => ({
+      ...participant,
+      isCurrentParticipant: participant.id === currentParticipantId,
+    }),
+  );
 
   return {
     room: lobby.room,

@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { createAdminSupabaseClient } from "@/lib/supabase/admin";
 import type {
   ParticipantRecord,
   RoomLobbyRecord,
   RoomRecord,
 } from "@/features/rooms/types";
+import { createAdminSupabaseClient } from "@/lib/supabase/admin";
 
 export type CreateRoomRecordInput = {
   code: string;
@@ -39,13 +39,13 @@ declare global {
   var __karaokeMemoryState__: MemoryState | undefined;
 }
 
-const memoryState =
-  globalThis.__karaokeMemoryState__ ??
-  (globalThis.__karaokeMemoryState__ = {
-    rooms: [],
-    participants: [],
-    queueCounts: new Map(),
-  });
+const memoryState = globalThis.__karaokeMemoryState__ ?? {
+  rooms: [],
+  participants: [],
+  queueCounts: new Map(),
+};
+
+globalThis.__karaokeMemoryState__ = memoryState;
 
 function mapRoom(row: {
   id: string;
@@ -154,7 +154,9 @@ function createSupabaseRoomRepository(): RoomRepository {
         .maybeSingle();
 
       if (error) {
-        throw new Error(`Unable to check room code availability: ${error.message}`);
+        throw new Error(
+          `Unable to check room code availability: ${error.message}`,
+        );
       }
 
       return !data;
@@ -185,7 +187,9 @@ function createSupabaseRoomRepository(): RoomRepository {
         .single();
 
       if (hostError) {
-        throw new Error(`Unable to create host participant: ${hostError.message}`);
+        throw new Error(
+          `Unable to create host participant: ${hostError.message}`,
+        );
       }
 
       const { error: updateError } = await supabase
@@ -251,7 +255,9 @@ function createSupabaseRoomRepository(): RoomRepository {
         .order("joined_at", { ascending: true });
 
       if (participantError) {
-        throw new Error(`Unable to load room participants: ${participantError.message}`);
+        throw new Error(
+          `Unable to load room participants: ${participantError.message}`,
+        );
       }
 
       const { count, error: queueError } = await supabase

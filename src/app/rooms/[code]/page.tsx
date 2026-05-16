@@ -2,8 +2,11 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { buildLobbyViewModel } from "@/features/rooms/lobby";
 import { getRoomRepository } from "@/features/rooms/repository";
-import { parseRoomSession, ROOM_SESSION_COOKIE } from "@/features/rooms/session";
 import { getRoomLobby } from "@/features/rooms/service";
+import {
+  parseRoomSession,
+  ROOM_SESSION_COOKIE,
+} from "@/features/rooms/session";
 
 type RoomPageProps = {
   params: Promise<{
@@ -14,7 +17,10 @@ type RoomPageProps = {
   }>;
 };
 
-export default async function RoomPage({ params, searchParams }: RoomPageProps) {
+export default async function RoomPage({
+  params,
+  searchParams,
+}: RoomPageProps) {
   const { code } = await params;
   const { participant } = await searchParams;
   const repository = getRoomRepository();
@@ -43,9 +49,15 @@ export default async function RoomPage({ params, searchParams }: RoomPageProps) 
               {viewModel.room.name}
             </h1>
             <p className="mt-3 text-base text-[var(--muted)]">
-              Room code <span className="font-bold text-[var(--foreground)]">{viewModel.room.code}</span>
+              Room code{" "}
+              <span className="font-bold text-[var(--foreground)]">
+                {viewModel.room.code}
+              </span>
               {" · "}
-              Status <span className="font-bold capitalize text-[var(--foreground)]">{viewModel.room.status}</span>
+              Status{" "}
+              <span className="font-bold capitalize text-[var(--foreground)]">
+                {viewModel.room.status}
+              </span>
             </p>
           </div>
 
@@ -53,7 +65,9 @@ export default async function RoomPage({ params, searchParams }: RoomPageProps) 
             <p className="font-semibold text-[var(--foreground)]">
               {viewModel.participants.length} singers in the room
             </p>
-            <p className="mt-1">Share the room code so your next guest can jump in.</p>
+            <p className="mt-1">
+              Share the room code so your next guest can jump in.
+            </p>
           </div>
         </div>
 
@@ -95,13 +109,16 @@ export default async function RoomPage({ params, searchParams }: RoomPageProps) 
 
             {viewModel.hasQueuedSongs ? (
               <p className="mt-4 text-base leading-7 text-[#f3eefe]">
-                {viewModel.queuedSongCount} song{viewModel.queuedSongCount === 1 ? "" : "s"} already waiting in the queue.
+                {viewModel.queuedSongCount} song
+                {viewModel.queuedSongCount === 1 ? "" : "s"} already waiting in
+                the queue.
               </p>
             ) : (
               <div className="mt-4 rounded-3xl border border-white/15 bg-white/8 p-5">
                 <p className="font-semibold">No songs queued yet</p>
                 <p className="mt-2 text-sm leading-6 text-[#f3eefe]">
-                  Invite a few friends in first. The room is ready for the catalog in Phase C.
+                  Invite a few friends in first. The room is ready for the
+                  catalog in Phase C.
                 </p>
               </div>
             )}

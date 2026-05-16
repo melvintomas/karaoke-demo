@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
   deserializeLyricLines,
-  serializeLyricLines,
   type LyricLine,
+  serializeLyricLines,
 } from "@/features/songs/lyrics";
 
 describe("lyric serialization", () => {

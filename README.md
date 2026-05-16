@@ -6,7 +6,7 @@ Shared-room karaoke MVP built with Next.js and Supabase.
 
 This repository currently includes:
 
-- A Next.js 16 app with TypeScript, Tailwind CSS, and ESLint
+- A Next.js 16 app with TypeScript, Tailwind CSS, and Biome
 - Environment parsing helpers for Supabase configuration
 - Shared Supabase clients for browser and server usage
 - An initial MVP data model and demo seed SQL
@@ -45,7 +45,9 @@ The homepage will be available at `http://localhost:3000`.
 - `npm run dev` starts the Next.js dev server
 - `npm run build` creates a production build
 - `npm run start` serves the production build
-- `npm run lint` runs ESLint
+- `npm run lint` runs Biome checks
+- `npm run lint:fix` applies Biome's safe fixes
+- `npm run format` formats supported files with Biome
 - `npm run test` runs unit tests
 - `npm run test:e2e` runs the Playwright smoke test
 

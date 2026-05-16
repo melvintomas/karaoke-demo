@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
     "test": "vitest run",
     "test:e2e": "playwright test"
   },
@@ -19,6 +21,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.15",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4.3.0",
     "@testing-library/jest-dom": "^6.9.1",
@@ -26,8 +29,6 @@
     "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "^16.2.6",
     "jsdom": "^27.0.1",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3",
