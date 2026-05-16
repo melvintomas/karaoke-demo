@@ -1,0 +1,68 @@
+const milestones = [
+  "Create rooms and let friends join from a shared link or code.",
+  "Browse a demo song catalog and add tracks to the room queue.",
+  "Open a full-screen karaoke player with synced lyric timing.",
+];
+
+const foundations = [
+  "Next.js app shell, routing, and shared source structure",
+  "Supabase environment parsing plus browser/server client helpers",
+  "Initial SQL schema for rooms, singers, queue items, songs, and lyric lines",
+];
+
+export default function Home() {
+  return (
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-10 sm:px-10 lg:px-12">
+      <section className="grid flex-1 gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="rounded-[2rem] border border-[var(--panel-border)] bg-[var(--panel)] p-8 shadow-[0_20px_80px_rgba(89,59,130,0.14)] backdrop-blur md:p-10">
+          <span className="inline-flex rounded-full bg-[rgba(255,122,89,0.14)] px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-[var(--accent-strong)]">
+            Phase A Foundation
+          </span>
+          <h1 className="mt-6 max-w-2xl text-5xl font-black tracking-[-0.04em] sm:text-6xl">
+            Build the karaoke room before the first song starts.
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
+            This starter app is wired for the MVP plan: room creation, queue management,
+            and synced lyrics backed by Supabase.
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {milestones.map((milestone) => (
+              <article
+                key={milestone}
+                className="rounded-3xl border border-[rgba(255,255,255,0.65)] bg-white/70 p-5"
+              >
+                <p className="text-sm font-medium leading-6 text-[var(--foreground)]">
+                  {milestone}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <aside className="flex flex-col gap-6">
+          <section className="rounded-[2rem] border border-[var(--panel-border)] bg-[#1b1432] p-8 text-white shadow-[0_20px_60px_rgba(27,20,50,0.24)]">
+            <p className="text-sm uppercase tracking-[0.2em] text-[#ffd9cc]">Current Slice</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em]">
+              Foundation, env wiring, and the first schema.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-[#f3eefe]">
+              Use the docs and SQL files in this repo to connect Supabase, seed demo songs,
+              and start shipping room flows in the next phase.
+            </p>
+          </section>
+
+          <section className="rounded-[2rem] border border-[var(--panel-border)] bg-white/82 p-8 shadow-[0_18px_50px_rgba(89,59,130,0.08)]">
+            <h2 className="text-xl font-bold">Included in this baseline</h2>
+            <ul className="mt-4 space-y-3 pl-5 text-[var(--muted)]">
+              {foundations.map((item) => (
+                <li key={item} className="list-disc leading-7">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+  );
+}
